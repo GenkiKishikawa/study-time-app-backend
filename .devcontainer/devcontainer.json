@@ -1,5 +1,13 @@
 {
   "dockerComposeFile": "../docker-compose.yml",
   "service": "backend",
-  "workspaceFolder": "/backend"
+  "workspaceFolder": "/backend",
+  "remoteUser": "developer",
+  "extensions": [
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "ms-azuretools.vscode-docker",
+    "yzhang.markdown-all-in-one",
+    "Hridoy.rails-snippets"
+  ]
 }

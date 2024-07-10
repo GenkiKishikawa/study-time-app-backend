@@ -16,7 +16,6 @@ RUN gem update --system && \
 
 COPY . /backend/
 
-# Railsサーバーの起動
-EXPOSE 3000
-
-CMD ["rails", "server", "-b", "0.0.0.0"]
+RUN useradd developer --create-home --shell /bin/bash && \
+  chown -R developer db log storage tmp
+USER developer:developer
