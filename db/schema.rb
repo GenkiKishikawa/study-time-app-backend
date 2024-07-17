@@ -10,9 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_11_075210) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_17_053221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "records", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.time "study_time"
+    t.integer "start_year"
+    t.integer "start_month"
+    t.integer "start_day"
+    t.time "start_time"
+    t.integer "end_year"
+    t.integer "end_month"
+    t.integer "end_day"
+    t.time "end_time"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -39,4 +56,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_11_075210) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "records", "users"
 end
