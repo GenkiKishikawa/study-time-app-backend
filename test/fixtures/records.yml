@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  study_time: 2024-07-17 05:32:21
+  start_yaer: 1
+  start_month: 1
+  start_day: 1
+  start_time: MyString
+  time: MyString
+  end_year: 1
+  end_month: 1
+  end_day: 1
+  end_time: 2024-07-17 05:32:21
+  category: MyString
+
+two:
+  user: two
+  study_time: 2024-07-17 05:32:21
+  start_yaer: 1
+  start_month: 1
+  start_day: 1
+  start_time: MyString
+  time: MyString
+  end_year: 1
+  end_month: 1
+  end_day: 1
+  end_time: 2024-07-17 05:32:21
+  category: MyString
