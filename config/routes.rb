@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
 
       resources :records
+      resources :monthly_time, only: [:index]
     end
   end
 end

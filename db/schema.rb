@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_17_053221) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_003309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "records", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.time "study_time"
+    t.integer "study_time"
     t.integer "start_year"
     t.integer "start_month"
     t.integer "start_day"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_17_053221) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "memo"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
