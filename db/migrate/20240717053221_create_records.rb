@@ -2,7 +2,7 @@ class CreateRecords < ActiveRecord::Migration[7.1]
   def change
     create_table :records do |t|
       t.references :user, null: false, foreign_key: true
-      t.time :study_time
+      t.integer :study_time
       t.integer :start_year
       t.integer :start_month
       t.integer :start_day
