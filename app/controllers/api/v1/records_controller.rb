@@ -1,10 +1,11 @@
 class Api::V1::RecordsController < ApplicationController
   include Pagination
 
+  before_action :authenticate_api_v1_user! 
   before_action :set_record, only: [:update, :destroy]
 
   def index
-    @records = Record.all.order(created_at: :desc).page(params[:page]).per(13)
+    @records = Record.where(user_id: current_api_v1_user.id).order(created_at: :desc).page(params[:page]).per(13)
     @pagination = resources_with_pagination(@records)
 
     response = {
@@ -49,6 +50,6 @@ class Api::V1::RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:study_time, :start_year, :start_month, :start_day, :start_time, :end_year, :end_month, :end_day, :end_time, :memo).merge(user_id: 1)
+    params.require(:record).permit(:study_time, :start_year, :start_month, :start_day, :start_time, :end_year, :end_month, :end_day, :end_time, :memo).merge(user_id: current_api_v1_user.id)
   end
 end
