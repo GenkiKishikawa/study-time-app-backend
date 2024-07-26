@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
       resources :records
       resources :monthly_time, only: [:index]
+      resources :daily_time, only: [:index]
     end
   end
 end
