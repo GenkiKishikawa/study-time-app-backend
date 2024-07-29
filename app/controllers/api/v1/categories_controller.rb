@@ -43,6 +43,11 @@ class Api::V1::CategoriesController < ApplicationController
     render json: { message: 'Category deleted' }
   end
 
+  def show
+    @category = Category.find(params[:id])
+    render json: @category
+  end
+
   private
 
   def set_category
@@ -50,6 +55,6 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name).merge(user_id: current_api_v1_user.id)
+    params.require(:category).permit(:name, :color).merge(user_id: current_api_v1_user.id)
   end
 end
