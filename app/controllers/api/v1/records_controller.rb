@@ -5,7 +5,11 @@ class Api::V1::RecordsController < ApplicationController
   before_action :set_record, only: [:update, :destroy]
 
   def index
-    @records = Record.where(user_id: current_api_v1_user.id).order(created_at: :desc).page(params[:page]).per(13)
+    if params[:order] == 'desc'
+      @records = Record.where(user_id: current_api_v1_user.id).order(id: :desc).page(params[:page]).per(13)
+    else
+      @records = Record.where(user_id: current_api_v1_user.id).order(id: :asc).page(params[:page]).per(13)
+    end
     @pagination = resources_with_pagination(@records)
 
     response = {
