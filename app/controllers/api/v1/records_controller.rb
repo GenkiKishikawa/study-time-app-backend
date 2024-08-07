@@ -54,6 +54,6 @@ class Api::V1::RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:study_time, :start_year, :start_month, :start_day, :start_time, :end_year, :end_month, :end_day, :end_time, :memo, :category_id).merge(user_id: current_api_v1_user.id)
+    params.require(:record).permit(:study_minutes, :start_datetime, :end_datetime, :memo, :category_id).merge(user_id: current_api_v1_user.id)
   end
 end

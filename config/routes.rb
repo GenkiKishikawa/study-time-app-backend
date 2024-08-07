@@ -13,8 +13,8 @@ Rails.application.routes.draw do
       get 'users/show', to: 'users#show'
 
       resources :records
-      resources :monthly_time, only: [:index]
-      resources :daily_time, only: [:index]
+      resources :monthly_times, only: [:index]
+      resources :daily_times, only: [:index]
       resources :categories
       resources :sub_categories
     end

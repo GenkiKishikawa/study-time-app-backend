@@ -12,8 +12,9 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = current_api_v1_user
-    image_url = url_for(user.image)
-    render json: { user: user, image_url: image_url }
+    image_url = user.image.attached? ? url_for(user.image) : nil
+  
+    render json: { user: user.as_json, image_url: image_url }
   end
 
   private

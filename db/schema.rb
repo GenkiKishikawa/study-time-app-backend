@@ -53,15 +53,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_30_030236) do
 
   create_table "records", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "study_time"
-    t.integer "start_year"
-    t.integer "start_month"
-    t.integer "start_day"
-    t.time "start_time"
-    t.integer "end_year"
-    t.integer "end_month"
-    t.integer "end_day"
-    t.time "end_time"
+    t.integer "study_minutes"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "memo"

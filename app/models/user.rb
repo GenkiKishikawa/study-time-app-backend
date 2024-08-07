@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
   has_one_attached :image
+  has_many :records
+  has_many :categories
 end
