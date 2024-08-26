@@ -20,10 +20,6 @@ class Api::V1::RecordsController < ApplicationController
     render json: response
   end
 
-  def new
-    @record = Record.new
-  end
-
   def create
     @record = Record.new(record_params)
     
@@ -43,8 +39,11 @@ class Api::V1::RecordsController < ApplicationController
   end
 
   def destroy
-    @record.destroy
-    render json: { message: 'Record deleted' }
+    if @record.destroy
+      render json: { message: 'Record deleted', status: 204 }
+    else
+      render json: { message: 'Record not deleted', status: 422 }
+    end
   end
 
   private
