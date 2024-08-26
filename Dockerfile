@@ -22,8 +22,8 @@ WORKDIR /backend
 
 COPY Gemfile /backend/Gemfile
 COPY Gemfile.lock /backend/Gemfile.lock
-RUN gem install bundler
 RUN gem update --system && \
+  bundle config set 'vender/bundle' && \
   bundle install
 
 COPY . /backend/

@@ -6,6 +6,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore
+/vender/bundle/
+
 # Ignore all environment files (except templates).
 /.env*
 !/.env*.erb
@@ -15,9 +18,9 @@
 /config/credentials/*.key
 
 # Ignore all logfiles and tempfiles.
-/log/*
+# /log/*
 /tmp/*
-!/log/.keep
+# !/log/.keep
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
