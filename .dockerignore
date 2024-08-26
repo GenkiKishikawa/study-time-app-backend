@@ -32,3 +32,6 @@
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/.keep
+
+# Ignore simplecov coverage reports.
+/coverage/

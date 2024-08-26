@@ -7,7 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
-#
+# Ignore gems installed by bundler.
 /vendor/bundle/
 
 # Ignore all environment files (except templates).
@@ -34,3 +34,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore simplecov coverage reports.
+/coverage/
