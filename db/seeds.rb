@@ -8,25 +8,26 @@ User.create!(
 
 Category.create!(
   name: 'React',
+  color: "#00ffff",
+  user_id: 1,
+)
+Category.create!(
+  name: '英語',
+  color: "#ff7f50",
   user_id: 1,
 )
 
 
-100.times do |n|
-  month = Faker::Number.between(from: 1, to: 7)
-  day = Faker::Number.between(from: 1, to: 28)
+
+1000.times do |n|
+  start_datetime = Faker::Time.between(from: DateTime.now - 2.year, to: DateTime.now)
+  end_datetime = start_datetime + rand(1..6).hours + rand(1..60).minutes
   Record.create!(
-    study_time: Faker::Number.between(from: 1, to: 15000),
-    start_year: 2024,
-    start_month: month,
-    start_day: day,
-    start_time: Faker::Time.between(from: (Time.current - 60 * 60).strftime("%H:%M:%S"), to: Time.current.strftime("%H:%M:%S")),
-    end_year: 2024,
-    end_month: month,
-    end_day: day,
-    end_time: Time.current.strftime("%H:%M:%S"),
+    study_minutes: (end_datetime - start_datetime) / 60,
+    start_datetime: start_datetime,
+    end_datetime: end_datetime,
     memo: Faker::Lorem.sentence(word_count: 10),
     user_id: 1,
-    category_id: 1,
+    category_id: Faker::Number.between(from: 1, to: 2),
   )
 end

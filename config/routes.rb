@@ -9,9 +9,12 @@ Rails.application.routes.draw do
         resources :sessions, only: [:index]
       end
 
+      put 'users/upload_image', to: 'users#upload_image'
+      get 'users/show', to: 'users#show'
+
       resources :records
-      resources :monthly_time, only: [:index]
-      resources :daily_time, only: [:index]
+      resources :monthly_times, only: [:index]
+      resources :daily_times, only: [:index]
       resources :categories
       resources :sub_categories
     end
