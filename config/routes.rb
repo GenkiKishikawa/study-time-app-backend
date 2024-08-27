@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :daily_times, only: [:index]
       resources :categories
       resources :sub_categories
+      resources :health_checks, only: [:index]
     end
   end
 end
