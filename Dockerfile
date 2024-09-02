@@ -1,4 +1,4 @@
-FROM ruby:3.2-bullseye
+FROM ruby:3.2.5-bullseye
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
   vim \
@@ -23,7 +23,7 @@ WORKDIR /backend
 COPY Gemfile /backend/Gemfile
 COPY Gemfile.lock /backend/Gemfile.lock
 RUN gem update --system && \
-  bundle config set 'vender/bundle' && \
+  bundle config --local path vendor/bundle && \
   bundle install
 
 COPY . /backend/
