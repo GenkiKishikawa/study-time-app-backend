@@ -1,0 +1,44 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2
+        bundler-cache: true
+
+    - name: Run Bundle install
+      run: |
+        bundle config --local path vendor/bundle
+        bundle config --local without production
+        bundle install
+
+    - name: Database create and migrate
+      run: |
+        cp config/ci/database.ci.yml config/database.yml
+        bundle exec rails db:create RAILS_ENV=test
+        bundle exec rails db:migrate RAILS_ENV=test
+
+    - name: Run rspec
+      run: bundle exec rspec

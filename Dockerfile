@@ -1,4 +1,4 @@
-FROM ruby:3.2-bullseye
+FROM ruby:3.2.5-bullseye
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
   vim \
@@ -22,12 +22,8 @@ WORKDIR /backend
 
 COPY Gemfile /backend/Gemfile
 COPY Gemfile.lock /backend/Gemfile.lock
-RUN gem install bundler
 RUN gem update --system && \
+  bundle config --local path vendor/bundle && \
   bundle install
 
 COPY . /backend/
-
-RUN useradd developer --create-home --shell /bin/bash && \
-  chown -R developer db log storage tmp
-USER developer:developer
