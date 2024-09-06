@@ -27,7 +27,3 @@ RUN gem update --system && \
   bundle install
 
 COPY . /backend/
-
-RUN useradd developer --create-home --shell /bin/bash && \
-  chown -R developer db log storage tmp
-USER developer:developer
